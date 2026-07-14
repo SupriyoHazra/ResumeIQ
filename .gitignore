@@ -1,0 +1,24 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# Python cache
+.pytest_cache/
+
+# Uploads & generated reports
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+backend/reports/*
+!backend/reports/.gitkeep
+
+# macOS
+.DS_Store
