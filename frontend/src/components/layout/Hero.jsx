@@ -1,7 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScoreCard from "../ui/ScoreCard";
 
 export default function Hero() {
+  const navigate = useNavigate();
+
   return (
     <section className="min-h-screen bg-slate-950 text-white flex items-center pt-24">
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 px-8">
@@ -29,11 +32,16 @@ export default function Hero() {
           </p>
 
           <div className="mt-10 flex gap-6">
-            <button className="bg-blue-600 hover:bg-blue-500 transition px-7 py-4 rounded-xl font-semibold shadow-lg">
+            <button
+              onClick={() => navigate("/upload")}
+              className="bg-blue-600 hover:bg-blue-500 transition px-7 py-4 rounded-xl font-semibold shadow-lg"
+            >
               Analyze Resume
             </button>
 
-            <button className="border border-slate-700 hover:bg-slate-900 transition px-7 py-4 rounded-xl">
+            <button
+              className="border border-slate-700 hover:bg-slate-900 transition px-7 py-4 rounded-xl"
+            >
               Watch Demo
             </button>
           </div>
