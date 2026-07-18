@@ -1,119 +1,87 @@
+// Premium Hero.jsx
+// NOTE: This is a starter premium Hero file.
+// Replace the contents of your current Hero.jsx with this file and continue customizing.
+
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import ScoreCard from "../ui/ScoreCard";
+import AuroraBackground from "../AuroraBackground";
 
 export default function Hero() {
   const navigate = useNavigate();
 
   return (
-    <section className="min-h-screen bg-slate-950 text-white flex items-center pt-24">
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 px-8">
+    <AuroraBackground>
+      <section className="relative min-h-screen overflow-hidden flex items-center">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,#2563eb22,transparent_60%)]" />
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 px-8 relative z-10">
 
-        {/* Left Side */}
-        <motion.div
-          initial={{ opacity: 0, x: -60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <p className="text-blue-400 font-semibold mb-4">
-            AI Resume Analyzer Pro
-          </p>
+          <motion.div
+            initial={{opacity:0,x:-80}}
+            animate={{opacity:1,x:0}}
+            transition={{duration:1}}
+          >
+            <p className="uppercase tracking-[0.35em] text-cyan-400 font-bold">
+              NEXT GENERATION AI CAREER PLATFORM
+            </p>
 
-          <h1 className="text-6xl font-extrabold leading-tight">
-            Analyze
-            <span className="text-blue-500"> Smarter </span>
-            Get Hired Faster.
-          </h1>
+            <h1 className="mt-6 text-7xl font-black leading-tight">
+              Analyze <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500 bg-clip-text text-transparent">Smarter</span><br/>
+              Get Hired Faster.
+            </h1>
 
-          <p className="mt-8 text-slate-400 text-lg leading-8">
-            ResumeIQ analyzes resumes using AI, ATS scoring,
-            skill detection, recruiter insights and intelligent
-            recommendations.
-          </p>
+            <p className="mt-8 text-xl text-slate-300 leading-9">
+              AI Resume Analyzer with ATS scoring, AI feedback, recruiter insights,
+              job matching and interview preparation.
+            </p>
 
-          <div className="mt-10 flex gap-6">
-            <button
-              onClick={() => navigate("/upload")}
-              className="bg-blue-600 hover:bg-blue-500 transition px-7 py-4 rounded-xl font-semibold shadow-lg"
-            >
-              Analyze Resume
-            </button>
+            <div className="mt-12 flex gap-5 flex-wrap">
+              <motion.button whileHover={{scale:1.08,y:-4}} onClick={()=>navigate("/register")}
+                className="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 font-bold shadow-2xl">
+                Create Account
+              </motion.button>
 
-            <button
-              className="border border-slate-700 hover:bg-slate-900 transition px-7 py-4 rounded-xl"
-            >
-              Watch Demo
-            </button>
-          </div>
+              <motion.button whileHover={{scale:1.08,y:-4}} onClick={()=>navigate("/login")}
+                className="px-8 py-4 rounded-2xl border border-cyan-500/40 bg-white/5 backdrop-blur-xl">
+                Login
+              </motion.button>
 
-          <div className="mt-12 flex gap-8 text-slate-400">
-            <div>
-              <h3 className="text-3xl font-bold text-white">10K+</h3>
-              <p>Resumes Analyzed</p>
+              <motion.button whileHover={{scale:1.08,y:-4}} onClick={()=>navigate("/upload")}
+                className="px-8 py-4 rounded-2xl border border-slate-700 bg-slate-900/40 backdrop-blur-xl">
+                Continue
+              </motion.button>
             </div>
+          </motion.div>
 
-            <div>
-              <h3 className="text-3xl font-bold text-white">95%</h3>
-              <p>ATS Accuracy</p>
-            </div>
+          <motion.div
+            initial={{opacity:0,scale:.8}}
+            animate={{opacity:1,scale:1}}
+            transition={{duration:1.2}}
+            className="flex justify-center items-center">
 
-            <div>
-              <h3 className="text-3xl font-bold text-white">24/7</h3>
-              <p>AI Support</p>
-            </div>
-          </div>
-        </motion.div>
+            <motion.div
+              animate={{y:[-10,10,-10],rotate:[0,1,0,-1,0]}}
+              transition={{repeat:Infinity,duration:6}}
+              className="w-[430px] rounded-[32px] border border-cyan-500/20 bg-white/5 backdrop-blur-2xl p-8 shadow-[0_0_60px_rgba(59,130,246,.35)]">
 
-        {/* Right Side */}
-        <motion.div
-          initial={{ opacity: 0, x: 60 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="flex justify-center items-center"
-        >
-          <div className="bg-slate-900/80 backdrop-blur-xl border border-slate-800 rounded-3xl p-8 w-[420px] shadow-2xl">
+              <h2 className="text-3xl font-bold text-center mb-8">
+                AI Resume Analysis
+              </h2>
 
-            <h2 className="text-2xl font-bold mb-8 text-center">
-              AI Resume Analysis
-            </h2>
+              <div className="space-y-5">
+                <ScoreCard title="ATS Score" value="96%" progress={96}/>
+                <ScoreCard title="Job Match" value="91%" progress={91}/>
+                <ScoreCard title="AI Score" value="A+" progress={98}/>
+                <ScoreCard title="Grammar" value="Excellent" progress={94}/>
+                <ScoreCard title="Projects" value="Strong" progress={90}/>
+              </div>
 
-            <div className="space-y-5">
+            </motion.div>
 
-              <ScoreCard
-                title="ATS Score"
-                value="96%"
-                progress={96}
-              />
+          </motion.div>
 
-              <ScoreCard
-                title="Job Match"
-                value="91%"
-                progress={91}
-              />
-
-              <ScoreCard
-                title="AI Score"
-                value="A+"
-                progress={98}
-              />
-
-              <ScoreCard
-                title="Grammar"
-                value="Excellent"
-                progress={94}
-              />
-
-              <ScoreCard
-                title="Projects"
-                value="Strong"
-                progress={90}
-              />
-
-            </div>
-          </div>
-        </motion.div>
-
-      </div>
-    </section>
+        </div>
+      </section>
+    </AuroraBackground>
   );
 }

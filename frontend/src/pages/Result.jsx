@@ -1,5 +1,5 @@
 import { useLocation, Navigate } from "react-router-dom";
-
+import DashboardLayout from "../components/DashboardLayout";
 import DashboardHeader from "../components/Dashboard/DashboardHeader";
 import OverviewCards from "../components/Dashboard/OverviewCards";
 import ATSAnalyticsCard from "../components/Dashboard/ATSAnalyticsCard";
@@ -10,6 +10,15 @@ import FeedbackCard from "../components/Dashboard/FeedbackCard";
 import AIAnalysisCard from "../components/Dashboard/AIAnalysisCard";
 import JobMatchCard from "../components/Dashboard/JobMatchCard";
 import ResumeRewriteCard from "../components/Dashboard/ResumeRewriteCard";
+import CoverLetterCard from "../components/Dashboard/CoverLetterCard";
+import InterviewPreparationCard from "../components/Dashboard/InterviewPreparationCard";
+import ResumeComparisonCard from "../components/Dashboard/ResumeComparisonCard";
+import SkillsRadarChart from "../components/Dashboard/SkillsRadarChart";
+import CareerRoadmapCard from "../components/Dashboard/CareerRoadmapCard";
+import KeywordOptimizerCard from "../components/Dashboard/KeywordOptimizerCard";
+import SalaryPredictorCard from "../components/Dashboard/SalaryPredictorCard";
+import HistoryCard from "../components/Dashboard/HistoryCard";
+import DownloadReportCard from "../components/Dashboard/DownloadReportCard";
 
 export default function Result() {
   const { state } = useLocation();
@@ -20,6 +29,7 @@ export default function Result() {
   }
 
   const data = state.result;
+
   console.log("AI Analysis:", data.ai_analysis);
 
   const resume = data.resume || {};
@@ -30,66 +40,115 @@ export default function Result() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white p-8">
-      <div className="max-w-7xl mx-auto">
+  <DashboardLayout>
+
+    <div className="max-w-7xl mx-auto text-white">
 
         {/* Header */}
         <DashboardHeader />
 
-        {/* Overview Cards */}
+        {/* Overview */}
         <OverviewCards ats={ats} />
 
         {/* ATS Analytics */}
         <div className="mt-8">
           <ATSAnalyticsCard ats={ats} />
         </div>
+        {/* Skills Radar */}
+<div className="mt-8">
+  <SkillsRadarChart
+    skills={resume.skills || []}
+  />
+</div>
 
         {/* Top Row */}
         <div className="grid lg:grid-cols-2 gap-8 mt-8">
-
           <ATSScoreCard ats={ats} />
-
           <CandidateCard resume={resume} />
-
         </div>
 
         {/* Middle Row */}
         <div className="grid lg:grid-cols-2 gap-8 mt-8">
-
           <SkillsCard skills={resume.skills || []} />
-
           <FeedbackCard feedback={ats.feedback || []} />
-
         </div>
 
         {/* AI Resume Review */}
-        <div className="mt-8">
+<div className="mt-8">
+  <AIAnalysisCard
+    analysis={data.ai_analysis}
+  />
+</div>
 
-          <AIAnalysisCard
-            analysis={data.ai_analysis}
-          />
+{/* Job Match */}
+<div className="mt-8">
+  <JobMatchCard
+    result={data.job_match || {}}
+  />
+</div>
 
-        </div>
+{/* Resume vs Job Description */}
+<div className="mt-8">
+  <ResumeComparisonCard
+    result={data.job_match || {}}
+  />
+</div>
 
-        {/* Job Match Analysis */}
-        <div className="mt-8">
+{/* Resume Rewriter */}
+<div className="mt-8">
+  <ResumeRewriteCard
+    resumeText={data.text || ""}
+  />
+</div>
 
-          <JobMatchCard
-            result={data.job_match || null}
-          />
+{/* Cover Letter */}
+<div className="mt-8">
+  <CoverLetterCard
+    resumeText={data.text || ""}
+    jobDescription={data.job_description || ""}
+  />
+</div>
 
-        </div>
+{/* Interview Preparation */}
+<div className="mt-8">
+  <InterviewPreparationCard
+    resumeText={data.text || ""}
+    jobDescription={data.job_description || ""}
+  />
+</div>
 
-        {/* AI Resume Rewriter */}
-        <div className="mt-8">
+{/* AI Career Roadmap */}
+<div className="mt-8">
+  <CareerRoadmapCard
+    resumeText={data.text || ""}
+  />
+</div>
 
-          <ResumeRewriteCard
-            resumeText={data.text || ""}
-          />
+{/* AI Keyword Optimizer */}
+<div className="mt-8">
+  <KeywordOptimizerCard
+    resumeText={data.text || ""}
+    jobDescription={data.job_description || ""}
+  />
+</div>
 
-        </div>
+{/* AI Salary Predictor */}
+<div className="mt-8">
+  <SalaryPredictorCard
+    resumeText={data.text || ""}
+  />
+</div>
 
-      </div>
-    </div>
+{/* Resume History */}
+<div className="mt-8">
+  <HistoryCard />
+</div>
+
+<div className="mt-8">
+  <DownloadReportCard data={data} />
+</div>
+            </div>
+
+  </DashboardLayout>
   );
 }

@@ -1,3 +1,4 @@
+import DashboardLayout from "../components/DashboardLayout";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Upload } from "lucide-react";
@@ -52,7 +53,9 @@ console.log(response.data);
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center px-6">
+  <DashboardLayout>
+
+    <div className="flex items-center justify-center min-h-[calc(100vh-100px)] px-6">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -101,6 +104,8 @@ console.log(response.data);
           {uploading ? "Analyzing..." : "Analyze Resume"}
         </button>
       </motion.div>
-    </div>
+        </div>
+
+  </DashboardLayout>
   );
 }

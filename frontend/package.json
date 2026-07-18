@@ -17,12 +17,15 @@
     "lucide-react": "^1.24.0",
     "react": "^19.2.7",
     "react-circular-progressbar": "^2.2.0",
+    "react-countup": "^6.5.3",
     "react-dom": "^19.2.7",
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.18.1",
+    "react-tsparticles": "^2.12.2",
     "recharts": "^3.9.2",
     "remark-gfm": "^4.0.1",
-    "tailwindcss": "^4.3.2"
+    "tailwindcss": "^4.3.2",
+    "tsparticles": "^4.3.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

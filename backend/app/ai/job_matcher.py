@@ -1,5 +1,6 @@
 import os
 import json
+import time
 
 from dotenv import load_dotenv
 from google import genai
@@ -13,13 +14,16 @@ client = genai.Client(
 
 def match_resume_to_job(resume_text: str, job_description: str):
     prompt = f"""
-You are an expert ATS recruiter.
+You are a senior ATS recruiter.
 
-Compare the following resume with the given Job Description.
+Compare the following Resume with the Job Description.
 
 Return ONLY valid JSON.
 
-Format:
+DO NOT use markdown.
+DO NOT wrap the JSON inside ```.
+
+Return exactly this format:
 
 {{
     "match_score": 0,
@@ -37,18 +41,38 @@ Job Description:
 {job_description}
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-    )
+    for attempt in range(3):
+        try:
+            response = client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+            )
 
-    try:
-        return json.loads(response.text)
+            text = response.text.strip()
 
-    except Exception:
-        return {
-            "match_score": 0,
-            "matching_skills": [],
-            "missing_skills": [],
-            "recommendations": [],
-        }
+            # Remove markdown fences if Gemini adds them
+            if text.startswith("```json"):
+                text = text.replace("```json", "", 1)
+
+            if text.startswith("```"):
+                text = text.replace("```", "", 1)
+
+            if text.endswith("```"):
+                text = text[:-3]
+
+            text = text.strip()
+
+            return json.loads(text)
+
+        except Exception as e:
+            print(f"Job Match Attempt {attempt+1}: {e}")
+
+            if attempt < 2:
+                time.sleep(2)
+            else:
+                return {
+                    "match_score": 0,
+                    "matching_skills": [],
+                    "missing_skills": [],
+                    "recommendations": [],
+                }

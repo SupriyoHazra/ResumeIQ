@@ -1,24 +1,27 @@
 # Python
-.venv/
-venv/
 __pycache__/
 *.pyc
-
-# Environment variables
+*.pyo
+*.pyd
+.venv/
 .env
 
-# VS Code
-.vscode/
+# Database
+*.db
 
-# Python cache
-.pytest_cache/
+# Node
+node_modules/
 
-# Uploads & generated reports
-backend/uploads/*
-!backend/uploads/.gitkeep
+# Build
+dist/
+build/
 
-backend/reports/*
-!backend/reports/.gitkeep
+# Vite
+.vite/
 
-# macOS
+# Logs
+*.log
+
+# OS
 .DS_Store
+Thumbs.db

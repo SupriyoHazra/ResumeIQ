@@ -1,79 +1,181 @@
 import { motion } from "framer-motion";
+import {
+  Brain,
+  CheckCircle2,
+  AlertTriangle,
+  Lightbulb,
+  Target,
+  BookOpen,
+  Briefcase,
+  Star,
+} from "lucide-react";
 
 export default function AIAnalysisCard({ analysis }) {
   if (!analysis) return null;
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      className="bg-slate-900 border border-slate-800 rounded-3xl p-8"
+      initial={{ opacity: 0, y: 25 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl"
     >
-      <h2 className="text-3xl font-bold mb-8">
-        🤖 AI Resume Review
-      </h2>
+      <div className="flex items-center gap-4 mb-8">
+        <div className="w-14 h-14 rounded-2xl bg-blue-600 flex items-center justify-center">
+          <Brain size={28} />
+        </div>
 
-      <Section title="📝 Resume Summary">
-        <p>{analysis.summary}</p>
+        <div>
+          <h2 className="text-3xl font-bold text-white">
+            AI Resume Intelligence
+          </h2>
+
+          <p className="text-slate-400">
+            Generated using ResumeIQ AI Engine
+          </p>
+        </div>
+      </div>
+
+      <Section
+        icon={<BookOpen size={20} />}
+        color="text-cyan-400"
+        title="Resume Summary"
+      >
+        <p>{analysis.summary || "No summary available."}</p>
       </Section>
 
-      <Section title="💪 Strengths">
-        {analysis.strengths?.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+      <Section
+        icon={<CheckCircle2 size={20} />}
+        color="text-green-400"
+        title="Strengths"
+      >
+        {analysis.strengths?.length ? (
+          analysis.strengths.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))
+        ) : (
+          <li>No strengths detected.</li>
+        )}
       </Section>
 
-      <Section title="⚠️ Weaknesses">
-        {analysis.weaknesses?.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+      <Section
+        icon={<AlertTriangle size={20} />}
+        color="text-red-400"
+        title="Weaknesses"
+      >
+        {analysis.weaknesses?.length ? (
+          analysis.weaknesses.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))
+        ) : (
+          <li>No weaknesses detected.</li>
+        )}
       </Section>
 
-      <Section title="🚀 Missing Skills">
-        {analysis.missing_skills?.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+      <Section
+        icon={<Target size={20} />}
+        color="text-yellow-400"
+        title="Missing Skills"
+      >
+        {analysis.missing_skills?.length ? (
+          analysis.missing_skills.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))
+        ) : (
+          <li>No missing skills.</li>
+        )}
       </Section>
 
-      <Section title="📈 ATS Tips">
-        {analysis.ats_tips?.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+      <Section
+        icon={<Lightbulb size={20} />}
+        color="text-indigo-400"
+        title="ATS Tips"
+      >
+        {analysis.ats_tips?.length ? (
+          analysis.ats_tips.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))
+        ) : (
+          <li>No ATS suggestions.</li>
+        )}
       </Section>
 
-      <Section title="✍️ Grammar Suggestions">
-        {analysis.grammar?.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+      <Section
+        icon={<BookOpen size={20} />}
+        color="text-pink-400"
+        title="Grammar Suggestions"
+      >
+        {analysis.grammar?.length ? (
+          analysis.grammar.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))
+        ) : (
+          <li>No grammar issues found.</li>
+        )}
       </Section>
 
-      <Section title="💡 Project Suggestions">
-        {analysis.project_suggestions?.map((item, i) => (
-          <li key={i}>{item}</li>
-        ))}
+      <Section
+        icon={<Briefcase size={20} />}
+        color="text-orange-400"
+        title="Project Suggestions"
+      >
+        {analysis.project_suggestions?.length ? (
+          analysis.project_suggestions.map((item, i) => (
+            <li key={i}>{item}</li>
+          ))
+        ) : (
+          <li>No project suggestions.</li>
+        )}
       </Section>
 
-      <Section title="👨‍💼 Recruiter Feedback">
-        <p>{analysis.recruiter_feedback}</p>
+      <Section
+        icon={<Brain size={20} />}
+        color="text-cyan-400"
+        title="Recruiter Feedback"
+      >
+        <p>
+          {analysis.recruiter_feedback ||
+            "No recruiter feedback available."}
+        </p>
       </Section>
 
-      <Section title="⭐ Overall Rating">
-        <h3 className="text-4xl font-bold text-blue-400">
-          {analysis.overall_rating}/10
+      <motion.div
+        whileHover={{ scale: 1.02 }}
+        className="mt-10 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-3xl p-8 text-center"
+      >
+        <Star
+          size={36}
+          className="mx-auto mb-4 text-yellow-300"
+        />
+
+        <h3 className="text-xl font-semibold">
+          Overall AI Rating
         </h3>
-      </Section>
+
+        <div className="text-6xl font-black mt-3">
+          {analysis.overall_rating || 0}/10
+        </div>
+      </motion.div>
     </motion.div>
   );
 }
 
-function Section({ title, children }) {
+function Section({
+  icon,
+  color,
+  title,
+  children,
+}) {
   return (
-    <div className="mb-8">
-      <h3 className="text-xl font-bold text-blue-400 mb-3">
-        {title}
-      </h3>
+    <div className="mb-8 bg-slate-800 rounded-2xl p-6">
+      <div className={`flex items-center gap-3 ${color}`}>
+        {icon}
 
-      <ul className="space-y-2 text-slate-300 list-disc pl-6">
+        <h3 className="text-xl font-bold">
+          {title}
+        </h3>
+      </div>
+
+      <ul className="mt-4 space-y-3 text-slate-300 list-disc pl-6">
         {children}
       </ul>
     </div>
