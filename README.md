@@ -2,65 +2,80 @@
 
 <div align="center">
 
-![Python](https://img.shields.io/badge/Python-3.14-blue)
-![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
-![React](https://img.shields.io/badge/React-Frontend-61DAFB)
-![License](https://img.shields.io/badge/License-MIT-orange)
+### AI-Powered Resume Analyzer & Career Intelligence Platform
 
-### AI Powered Resume Analyzer with ATS Scoring, Career Guidance & Interview Preparation
+Analyze • Improve • Optimize • Get Hired
 
 </div>
 
 ---
 
-# 📖 Overview
+## 📌 Overview
 
-ResumeIQ AI is a modern AI-powered resume analysis platform that helps job seekers improve their resumes using Artificial Intelligence.
+ResumeIQ AI is a modern AI-powered Resume Analysis Platform built using React, FastAPI, and Google Gemini.
 
-It performs:
+It helps job seekers analyze resumes, improve ATS scores, generate interview questions, optimize keywords, create cover letters, and receive AI-driven career recommendations.
 
-- ATS Score Analysis
-- Resume Evaluation
-- AI Feedback
-- Job Match Prediction
-- Keyword Optimization
-- Career Roadmap
-- Interview Questions
-- Cover Letter Generation
-- Salary Prediction
-- Resume History
-- Authentication System
-- Professional Dashboard
+The platform provides a futuristic dashboard with professional analytics for recruiters and candidates.
 
 ---
 
 # ✨ Features
 
-✅ User Authentication
+### 🤖 AI Resume Analysis
 
-✅ Resume Upload
+- AI Resume Review
+- ATS Score Calculation
+- Resume Strength Analysis
+- Grammar Detection
+- Professional Feedback
 
-✅ PDF Parsing
+---
 
-✅ ATS Score
+### 📄 Resume Enhancement
 
-✅ Skill Detection
+- Resume Rewrite
+- Keyword Optimization
+- ATS Improvements
+- Resume Comparison
 
-✅ AI Resume Analysis
+---
 
-✅ AI Job Matching
+### 💼 Career Intelligence
 
-✅ AI Career Roadmap
+- Job Match Score
+- Salary Prediction
+- Career Roadmap
+- Skills Analysis
+- Skill Gap Detection
 
-✅ AI Interview Preparation
+---
 
-✅ AI Cover Letter
+### 🎯 Interview Preparation
 
-✅ Resume History
+- AI Interview Questions
+- Technical Questions
+- HR Questions
+- Personalized Recommendations
 
-✅ Dashboard Analytics
+---
 
-✅ Download Reports
+### 📊 Dashboard
+
+- Interactive Charts
+- ATS Analytics
+- Resume History
+- Performance Overview
+- Career Progress
+
+---
+
+### 🔐 Authentication
+
+- User Registration
+- Login System
+- JWT Authentication
+- Protected Routes
 
 ---
 
@@ -68,54 +83,107 @@ It performs:
 
 ## Frontend
 
-- React
+- React 19
 - Vite
-- Tailwind CSS
+- TailwindCSS
 - Framer Motion
 - Recharts
+- Axios
 - React Router
+
+---
 
 ## Backend
 
 - FastAPI
 - Python
 - SQLAlchemy
-- JWT Authentication
 - Google Gemini API
-- PyMuPDF
 - ReportLab
+- PyMuPDF
+
+---
+
+## Database
+
+SQLite
 
 ---
 
 # 📂 Project Structure
 
 ```
-ResumeIQ/
+ResumeIQ
 │
-├── backend/
+├── backend
+│   ├── app
+│   │   ├── ai
+│   │   ├── auth
+│   │   ├── database.py
+│   │   ├── models.py
+│   │   └── crud.py
+│   │
+│   ├── uploads
+│   ├── requirements.txt
+│   └── main.py
 │
-├── frontend/
+├── frontend
+│   ├── src
+│   │   ├── components
+│   │   ├── pages
+│   │   ├── assets
+│   │   └── App.jsx
+│   │
+│   ├── package.json
+│   └── vite.config.js
 │
-├── README.md
-│
-└── .gitignore
+└── README.md
 ```
 
 ---
 
 # ⚙ Installation
 
+## Clone Repository
+
+```bash
+git clone https://github.com/SupriyoHazra/ResumeIQ.git
+```
+
+```bash
+cd ResumeIQ
+```
+
+---
+
 ## Backend
 
 ```bash
 cd backend
+```
 
+```bash
 python -m venv .venv
+```
 
-.venv\Scripts\activate
-
+```bash
 pip install -r requirements.txt
+```
 
+Create
+
+```
+.env
+```
+
+```
+GEMINI_API_KEY=YOUR_API_KEY
+SECRET_KEY=YOUR_SECRET_KEY
+```
+
+Run
+
+```bash
 uvicorn main:app --reload
 ```
 
@@ -125,24 +193,14 @@ uvicorn main:app --reload
 
 ```bash
 cd frontend
+```
 
+```bash
 npm install
+```
 
+```bash
 npm run dev
-```
-
----
-
-# 🔑 Environment Variables
-
-Create
-
-```
-backend/.env
-```
-
-```
-GEMINI_API_KEY=YOUR_API_KEY
 ```
 
 ---
@@ -153,14 +211,15 @@ Coming Soon
 
 ---
 
-# 📈 Future Improvements
+# 🔮 Future Improvements
 
-- AI Resume Rewrite
+- AI Mock Interview
+- Resume Ranking
+- Portfolio Analysis
+- Company Specific Resume
+- Voice Interview
+- AI Recruiter
 - Multi-language Support
-- LinkedIn Analyzer
-- Portfolio Analyzer
-- Cloud Deployment
-- Team Collaboration
 
 ---
 
@@ -172,8 +231,10 @@ B.Tech CSE (AI & ML)
 
 Techno India University
 
+GitHub:
+
+https://github.com/SupriyoHazra
+
 ---
 
-# ⭐ Star this Repository
-
-If you like this project, don't forget to star the repository.
+## ⭐ If you like this project, give it a Star.
